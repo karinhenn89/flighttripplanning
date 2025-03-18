@@ -1,0 +1,67 @@
+[
+  {
+    "flightId": "FL124",
+    "from": "Tallinn",
+    "to": "London",
+    "departureTime": "2025-06-11T08:00:00",
+    "arrivalTime": "2025-06-11T10:30:00",
+    "aircraft": {
+      "type": "Airbus A320",
+      "allSeats": 146
+    },
+    "availableSeats": 2,
+    "price": 123
+  },
+  {
+    "flightId": "FL125",
+    "from": "Tallinn",
+    "to": "London",
+    "departureTime": "2025-06-12T15:00:00",
+    "arrivalTime": "2025-06-12T17:30:00",
+    "aircraft": {
+      "type": "Boeing 767",
+      "allSeats": 181
+    },
+    "availableSeats": 10,
+    "price": 222
+  },
+  {
+    "flightId": "FL130",
+    "from": "Tallinn",
+    "to": "Amsterdam",
+    "departureTime": "2025-06-15T11:30:00",
+    "arrivalTime": "2025-06-15T14:00:00",
+    "aircraft": {
+      "type": "Embraer E190",
+      "allSeats": 100
+    },
+    "availableSeats": 1,
+    "price": 56
+  },
+  {
+    "flightId": "FL135",
+    "from": "Tallinn",
+    "to": "Paris",
+    "departureTime": "2025-06-18T07:00:00",
+    "arrivalTime": "2025-06-18T10:45:00",
+    "aircraft": {
+      "type": "Airbus A321",
+      "allSeats": 206
+    },
+    "availableSeats": 5,
+    "price": 234
+  },
+  {
+    "flightId": "FL140",
+    "from": "Tallinn",
+    "to": "London",
+    "departureTime": "2025-06-20T18:00:00",
+    "arrivalTime": "2025-06-20T20:30:00",
+    "aircraft": {
+      "type": "Boeing 737",
+      "allSeats": 126
+    },
+    "availableSeats": 2,
+    "price": 100
+  }
+]
