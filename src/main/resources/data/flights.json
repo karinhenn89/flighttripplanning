@@ -63,5 +63,18 @@
     },
     "availableSeats": 2,
     "price": 100
+  },
+  {
+    "flightId": "FL140",
+    "from": "London",
+    "to": "Tallinn",
+    "departureTime": "2025-06-21T18:00:00",
+    "arrivalTime": "2025-06-21T20:30:00",
+    "aircraft": {
+      "type": "Boeing 737",
+      "allSeats": 126
+    },
+    "availableSeats": 50,
+    "price": 130
   }
 ]

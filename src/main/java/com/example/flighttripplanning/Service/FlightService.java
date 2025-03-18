@@ -11,8 +11,9 @@ import org.springframework.stereotype.Service;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Map;
 
 @Service
 public class FlightService {
@@ -35,7 +36,18 @@ public class FlightService {
         flightRepository.saveAll(flights);
     }
 
+    public Map<String, List<String>> getAllFlightsFromLocation() {
+        List<String> fromLocation = flightRepository.findDistinctFromLocation();
+        return Map.of("fromLocation", fromLocation);
+    }
+
+    public Map<String, List<String>> getToLocationsByFrom(String fromLocation) {
+        List<String> toLocations = flightRepository.findDistinctToLocationByFromLocation(fromLocation);
+        return Map.of("toLocations", toLocations);
+    }
+
     public List<Flight> searchFlights(String from, String to) {
         return flightRepository.findByFromLocationIgnoreCaseAndToLocationIgnoreCase(from, to);
     }
+
 }
