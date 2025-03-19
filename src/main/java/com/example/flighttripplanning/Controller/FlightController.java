@@ -1,5 +1,6 @@
 package com.example.flighttripplanning.Controller;
 
+import com.example.flighttripplanning.Model.Aircraft;
 import com.example.flighttripplanning.Model.Flight;
 import com.example.flighttripplanning.Service.FlightService;
 import org.springframework.web.bind.annotation.*;
@@ -22,8 +23,11 @@ public class FlightController {
             @RequestParam String to,
             @RequestParam(required = false) String departureTime,
             @RequestParam(required = false) String arrivalTime,
-            @RequestParam(required = false) Integer availableSeats) {
-        return flightService.searchFlights(from, to, departureTime, arrivalTime, availableSeats);
+            @RequestParam(required = false) Integer availableSeats,
+            @RequestParam(required = false) boolean price,
+            @RequestParam(required = false) Aircraft aircraft,
+            @RequestParam(required = false) Integer allSeats) {
+        return flightService.searchFlights(from, to, departureTime, arrivalTime, availableSeats, price, aircraft, allSeats);
     }
 
     @GetMapping("/locations-from")

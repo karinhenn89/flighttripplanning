@@ -1,5 +1,6 @@
 package com.example.flighttripplanning.Service;
 
+import com.example.flighttripplanning.Model.Aircraft;
 import com.example.flighttripplanning.Repository.FlightRepository;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.example.flighttripplanning.Model.Flight;
@@ -46,13 +47,20 @@ public class FlightService {
         return Map.of("toLocations", toLocations);
     }
 
-    public List<Flight> searchFlights(String from, String to, String departureTime, String arrivalTime, Integer availableSeats) {
+    public List<Flight> searchFlights(String from, String to, String departureTime, String arrivalTime, Integer availableSeats, boolean price, Aircraft aircraft, Integer allSeats) {
         List<Flight> flights = flightRepository.findByFromLocationIgnoreCaseAndToLocationIgnoreCase(from, to);
 
         return flights.stream()
                 .filter(f -> (departureTime == null || f.getDepartureTime().toString().contains(departureTime)))
                 .filter(f -> (arrivalTime == null || f.getArrivalTime().toString().contains(arrivalTime)))
                 .filter(f -> (availableSeats == null || f.getAvailableSeats() >= availableSeats))
+                .filter(f -> !price || f.getPrice() != 0.00) // Kui price on tõene, siis filtrime need lennud, mis sisaldavad hinda
+                .map(flight -> {
+                    // Siin saad lisada muid atribuute, nagu allSeats ja price
+                    flight.setPrice(flight.getPrice());
+                    flight.getAircraft().setAllSeats(flight.getAircraft().getAllSeats());
+                    return flight;
+                })
                 .collect(Collectors.toList());
     }
 

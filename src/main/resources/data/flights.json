@@ -72,7 +72,7 @@
     "arrivalTime": "2025-06-21T20:30:00",
     "aircraft": {
       "type": "Boeing 737",
-      "allSeats": 126
+      "allSeats": 166
     },
     "availableSeats": 50,
     "price": 130
