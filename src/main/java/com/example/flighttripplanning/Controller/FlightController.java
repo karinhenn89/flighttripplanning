@@ -17,8 +17,13 @@ public class FlightController {
     }
 
     @GetMapping("/search")
-    public List<Flight> searchFlights(@RequestParam String from, @RequestParam String to) {
-        return flightService.searchFlights(from, to);
+    public List<Flight> searchFlights(
+            @RequestParam String from,
+            @RequestParam String to,
+            @RequestParam(required = false) String departureTime,
+            @RequestParam(required = false) String arrivalTime,
+            @RequestParam(required = false) Integer availableSeats) {
+        return flightService.searchFlights(from, to, departureTime, arrivalTime, availableSeats);
     }
 
     @GetMapping("/locations-from")

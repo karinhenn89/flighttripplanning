@@ -11,9 +11,9 @@ import org.springframework.stereotype.Service;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 public class FlightService {
@@ -46,8 +46,14 @@ public class FlightService {
         return Map.of("toLocations", toLocations);
     }
 
-    public List<Flight> searchFlights(String from, String to) {
-        return flightRepository.findByFromLocationIgnoreCaseAndToLocationIgnoreCase(from, to);
+    public List<Flight> searchFlights(String from, String to, String departureTime, String arrivalTime, Integer availableSeats) {
+        List<Flight> flights = flightRepository.findByFromLocationIgnoreCaseAndToLocationIgnoreCase(from, to);
+
+        return flights.stream()
+                .filter(f -> (departureTime == null || f.getDepartureTime().toString().contains(departureTime)))
+                .filter(f -> (arrivalTime == null || f.getArrivalTime().toString().contains(arrivalTime)))
+                .filter(f -> (availableSeats == null || f.getAvailableSeats() >= availableSeats))
+                .collect(Collectors.toList());
     }
 
 }
